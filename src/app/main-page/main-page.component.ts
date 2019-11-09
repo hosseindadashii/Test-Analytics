@@ -8,6 +8,8 @@ import { CrudService } from 'src/service/crud.service';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
+
+  // static Data
   comments = [
     {name : 'Erica Sanders', text: 'i am a die hard porsche fan. their history in unparalleled in the world of motorsport. Prod oener of a Boxer S ; (^_^)' , img : 'assets/face1.png'},
     {name : 'Elizabeth Hungerhoff', text: 'i have always loved the 911s but this looks really sporty!' , img: 'assets/face2.png'},
@@ -19,12 +21,11 @@ export class MainPageComponent implements OnInit {
     {name: 'Germany', img: 'assets/germany.jpg'},
     {name: 'Us', img: 'assets/Us.jpg'},
     ];
-    totalThis = 0;
-    totalThat = 0;
-    lovers;
-    notLovers;
   gender = ['male', 'female'];
-  // users: User[];
+
+
+  totalThis = 0;
+  totalThat = 0;
   users = [];
   currentUser = {
   gender : '',
@@ -36,7 +37,6 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    
     this.crudService.getData().subscribe(data => {
       this.currentUser.country = this.countries[Math.floor(Math.random() * this.countries.length)].name;
       this.currentUser.gender = this.gender[Math.floor(Math.random() * this.gender.length)];
@@ -50,8 +50,6 @@ export class MainPageComponent implements OnInit {
     this.totalThis = 0;
     for (var i = 0; i < this.users.length; i++) {
       if (this.users[i].isLove === true) {
-        console.log(6)
-
         this.totalThis++;
       }else {
         this.totalThat++;
@@ -59,20 +57,14 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-
   getCountryLogo(countryName) {
     var userCont = this.countries.find(country => country.name == countryName);
     return userCont.img;
   }
 
-
-  clacdataPrecent(a , b) {
-
-  }
   userAction(loveAction) {
     this.currentUser.isLove = loveAction;
     console.log(this.currentUser)
     this.crudService.setUser(this.currentUser);
   }
-
 }

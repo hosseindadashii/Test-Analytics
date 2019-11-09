@@ -26,8 +26,6 @@ export class DiagramComponent implements OnInit {
     this.maleVotes = [0,0,0,0];
     this.femaleVotes = [0,0,0,0];
     for (var i = 0; i < this.countries.length ; i++) {
-      // this.maleVotes.push(0)
-      // this.femaleVotes.push(0)
       for (var j = 0 ; j < this.users.length; j++) {
         if (this.countries[i] === this.users[j].country && this.users[j].gender === 'male'){
           this.maleVotes[i]++
@@ -40,15 +38,9 @@ export class DiagramComponent implements OnInit {
       { data: this.maleVotes, label: 'Male' },
       { data: this.femaleVotes, label: 'Female' },
     ];
-    console.log(this.maleVotes, this.femaleVotes)
   }
   
   public chartType: string = 'bar';
-
-// public chartDatasets: Array<any> = [
-//   { data: this.maleVotes, label: 'Male' },
-//   { data: this.femaleVotes, label: 'Female' },
-// ];
   public chartColors: Array<any> = [
     {
       backgroundColor: [
