@@ -1,0 +1,162 @@
+<div class="pink-bg">
+    <div class='body'>
+        <div class="header column">
+            <div class="logo row">
+                <span>
+                    <img src="assets/logo.png" class="logo">
+                    <h1 class="title">This That Analytics</h1>
+                </span>
+                <span class="row">
+                    <span>
+                        <img class="country-logo" [src]="getCountryLogo(currentUser.country)">
+                    </span>
+                    <span>
+                        <img *ngIf="currentUser.gender === 'male'" src="assets/male.png">
+                        <img *ngIf="currentUser.gender === 'female'" src="assets/female2.png">
+                    </span>
+                </span>
+            </div>
+            <div class='menu-items row'>
+                <button class="menu">
+                    <span><img src="assets/menu1.png"></span>
+                    <h4>Dashboard</h4>
+                </button>
+                <button class="menu">
+                    <span><img src="assets/menu2.png"></span>
+                    <h4>Manage Profile</h4>
+                </button> 
+                <button class="menu">
+                    <span><img src="assets/menu3.png"></span>
+                    <h4>Create Poll</h4>
+                </button>
+                <button class="menu">
+                    <span><img src="assets/menu4.png"></span>
+                    <h4>Publish And Promote</h4>
+                </button>
+                <button class="menu">
+                    <span><img src="assets/mnu5.png"></span>
+
+                    <h4>ThisThat Message</h4>
+                </button>
+            </div>
+        </div>
+        <div class='main row'>
+            <div class="col-md-4 column left-side">
+                <div class="car-cont column">
+                    <span class="row">
+                        <h4 class="this-title">gold rims on the GT3 RS?</h4>
+                        <h4 class="this-btn">This</h4>
+                    </span>
+                    <span>
+                        <img src="assets/car.png">
+                    </span>
+                    <span class="love-actions-cont row">
+                        <button (click)="userAction(true)" class="love-action">
+                            <b>Love Them</b>
+                        </button>
+                        <button (click)="userAction(false)" class="love-action">
+                            <b>Not a fan</b>
+                        </button>
+                    </span>
+                </div>
+                <button class="view-comment"><b>Comments 124</b></button>
+                <div class="comments row" *ngFor= "let comment of comments">
+                    <span class="comment-box row">
+                        <img [src]="comment.img">
+                        <span class="comment-box">
+                            <h5>{{comment.name}}</h5>
+                            <p>{{comment.text}}</p>
+                        </span>
+                        <span>
+                            <!-- <img class="up" src="assets/logo.png"> -->
+                            <img class="down" src="assets/up-down.png">
+                        </span>    
+                    </span>
+                    <span class="message-logo">
+                        <img src="assets/message.png">
+                        <h5 *ngIf="comment.isMore">comment.isMore</h5>
+                    </span>
+                </div>            
+            </div>
+            <div class="col-md-8 column">
+                <div class="this-that-precent row">
+                    <span>
+                        <h4>"this" votes : {{totalThis}}</h4>
+                        <h1><b>{{(totalThis*100/users.length).toFixed(1)}} %</b></h1>
+                    </span>
+                    <span>
+                        <h4>"that" votes : {{totalThat}}</h4>
+                        <h1><b>{{(totalThat*100/users.length).toFixed(1)}} %</b></h1>
+                    </span>
+                </div>
+                <div class="votes-information row">
+                    <div class="col-md-6 column">
+                        <span class="total-votes row">
+                            <img src="assets/shape1.png">
+                            <span>
+                                <h5>Votes</h5>
+                                <h2><b>{{users.length}}</b></h2>
+                            </span>
+                        </span>
+                        <span class="total-reach row">
+                            <img src="assets/shape2.png">
+                            <span>
+                                <h5>Total reach in the past 7 days</h5>
+                                <h2><b>6,015</b></h2>
+                            </span>
+                        </span>
+                        <span class="audience row">
+                            <img src="assets/shape3.png">
+                            <span>
+                                <h5>Audience gender</h5>
+                                <h2><b>80 : 20</b></h2>
+                                <span>
+                                    <h5>Male</h5>
+                                    <h5>Female</h5>
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="col-md-6 column">
+                        <span class="thread row">
+                            <span class="col-md-6 row">
+                                <img src="assets/shape7.png">
+                                <img src="assets/shape8.png">
+                            </span>
+                            <span  class="col-md-6 row">
+                                <img src="assets/shape4.png">
+                                <h4>Thread</h4>
+                            </span>
+                        </span>
+                        <span class="likes row">
+                            <img src="assets/shape5.png">
+                            <span>
+                                <h5>Likes</h5>
+                                <h2><b>572</b></h2>
+                            </span>
+                        </span>
+                        <span class="shares row">
+                            <img src="assets/shape6.png">
+                            <span>
+                                <h5>Number of "shares"</h5>
+                                <h2><b>135</b></h2>
+                                <h5>copied linkes and shares</h5>
+                            </span>
+                        </span>
+                    </div>
+                    
+                </div>
+                <app-diagram></app-diagram>
+            </div>
+        </div>
+        <div class='footer'>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
